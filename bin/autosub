@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+"use strict";
+
+process.bin = process.title = "autosub";
+
+console.log("Run command !!!");
+console.log(process.argv);
+
+var autosub = require('../lib');
+autosub.test();

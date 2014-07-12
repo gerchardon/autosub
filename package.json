@@ -1,0 +1,28 @@
+{
+  "name": "autosub",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [
+    "serie",
+    "subtitles",
+    "opensub",
+    "addiced"
+  ],
+  "main": "lib",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha --require test/support/env --reporter spec"
+  },
+  "bin": {
+    "autosub": "bin/autosub"
+  },
+  "preferGlobal": true,
+  "author": "Gerome Chardon",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^1.20.1",
+    "should": "^4.0.4"
+  }
+}
