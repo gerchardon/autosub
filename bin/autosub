@@ -3,8 +3,15 @@
 
 process.bin = process.title = "autosub";
 
-console.log("Run command !!!");
-console.log(process.argv);
+// Init logger
+var winston = require('winston');
+winston.cli();
 
+var files = process.argv.slice(2);
+winston.debug('Find subtitles for : %s', files, {});
+
+// Execute for all plugins
 var autosub = require('../lib');
-autosub.test();
+// TODO Use manager for all plugins
+// autosub().plugins.addic7ed.search('test.avi');
+autosub().search('test.avi');
