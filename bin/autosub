@@ -3,15 +3,27 @@
 
 process.bin = process.title = "autosub";
 
-// Init logger
-var winston = require('winston');
-winston.cli();
+var program = require('commander');
+program
+    .version('0.0.1')
+    .option('-v, --verbose', 'Verbose mode');
 
-var files = process.argv.slice(2);
-winston.debug('Find subtitles for : %s', files, {});
+program.command('download <file>')
+    .action(function(file){
+        var winston = require('winston');
+        winston.cli();
+        if(program.verbose) {
+            winston.level = 'debug';
+        }
+        winston.debug('Find subtitles for : %s', file, {});
 
-// Execute for all plugins
-var autosub = require('../lib');
-// TODO Use manager for all plugins
-// autosub().plugins.addic7ed.search('test.avi');
-autosub().search('test.avi');
+        var Autosub = require('../');
+        new Autosub()
+            .download(file)
+            .fail(function(e) {
+                winston.error("Error when : ", e.message, {});
+            })
+            .done();
+    });
+
+program.parse(process.argv);
