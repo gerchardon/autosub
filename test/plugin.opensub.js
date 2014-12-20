@@ -16,9 +16,9 @@ describe('autosub.plugins.opensub', function() {
 
             results.forEach(function(r){
                 winston.debug("zzzz");
-                console.log(r.MovieKind);
-                console.log(r.SubLanguageID);
-                console.log(r.SubFormat);
+                // console.log(r.MovieKind);
+                // console.log(r.SubLanguageID);
+                // console.log(r.SubFormat);
             });
             done();
         }).done();

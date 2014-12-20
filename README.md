@@ -12,5 +12,12 @@ Create module for download subtitle for Series and Films.
 
 ## Usage
 
+### Stable
+
     sudo npm install autosub -g
+    autosub <filename>
+
+### Source
+
+    sudo npm install git/....
     autosub <filename>
