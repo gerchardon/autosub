@@ -1,29 +1,35 @@
 #!/usr/bin/env node
+ // -*- mode: Javascript; -*-
 "use strict";
-
 process.bin = process.title = "autosub";
 
 var program = require('commander');
+var chalk = require("chalk");
+
 program
-    .version('0.0.1')
-    .option('-v, --verbose', 'Verbose mode');
+  .version('0.0.1')
+  .option('-v, --verbose', 'Verbose mode');
 
 program.command('download <file>')
-    .action(function(file){
-        var winston = require('winston');
-        winston.cli();
-        if(program.verbose) {
-            winston.level = 'debug';
-        }
-        winston.debug('Find subtitles for : %s', file, {});
+  .action(function(file) {
+    var winston = require('winston');
+    winston.cli();
+    if (program.verbose) {
+      winston.level = 'debug';
+    }
+    winston.debug('Find subtitles for : %s', file, {});
 
-        var Autosub = require('../');
-        new Autosub()
-            .download(file)
-            .fail(function(e) {
-                winston.error("Error when : ", e.message, {});
-            })
-            .done();
-    });
+    var Autosub = require('../');
+    new Autosub()
+      .download(file)
+      .fail(function(e) {
+        winston.error("Error when : ", e.message, {});
+      })
+      .done();
+  });
+
+program.command('test').action(function() {
+  console.log(chalk.blue('Hello World !'));
+});
 
 program.parse(process.argv);
