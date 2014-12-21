@@ -1,5 +1,7 @@
 # autosub
 
+[![Dependency Status](https://david-dm.org/gerchardon/autosub.svg)](https://david-dm.org/gerchardon/autosub)
+
 NodeJS App to download Subtitles (In Progress ...)
 
 ## Sumary
