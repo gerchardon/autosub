@@ -25,3 +25,7 @@ build/Release
 node_modules
 /.tern-port
 /test/support/local-test.yaml
+
+# C9
+.settings
+.c9revisions
