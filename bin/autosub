@@ -10,6 +10,13 @@ program
   .version('0.0.1')
   .option('-v, --verbose', 'Verbose mode');
 
+
+program.on('--help', function(){
+  console.log('  Examples:');
+  console.log('');
+  console.log('    $ autosub download MovieS01E02.avi');
+});
+
 program.command('download <file>')
   .action(function(file) {
     var winston = require('winston');
