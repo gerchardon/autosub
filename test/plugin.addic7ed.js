@@ -8,7 +8,7 @@ var winston = require("winston");
 describe('autosub.plugins.addic7ed', function() {
   this.timeout(5000);
 
-  it.skip('search', function(done) {
+  it('search', function(done) {
     addicted.search(info).then(function(results) {
       should.exist(results);
       results.should.be.a('array');

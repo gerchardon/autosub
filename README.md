@@ -23,3 +23,22 @@ Create module for download subtitle for Series and Films.
 
     sudo npm install git/....
     autosub <filename>
+
+
+## Dev
+
+### Source
+
+### Test
+
+Create a file : test/support/local-test.yaml
+
+    OpenSub:
+      user: <USER>
+      password: <PASS>
+
+Run Test
+
+    make test
+    # or watch
+    make test-w
