@@ -4,13 +4,8 @@
 process.bin = process.title = "autosub";
 
 var program = require('commander');
-var chalk = require("chalk");
-
 program
-  .version('0.0.1')
-  .option('-v, --verbose', 'Verbose mode');
-
-
+  .version('0.0.1');
 program.on('--help', function(){
   console.log('  Examples:');
   console.log('');
@@ -18,102 +13,6 @@ program.on('--help', function(){
 });
 
 program
-  .command('download <file>')
-  .option('-d, --driver <driver>', 'Driver choose')
-  .action(function(file, options) {
-    var winston = require('winston');
-    winston.cli();
-    if (program.verbose) {
-      winston.level = 'debug';
-    }
-    winston.debug('Find subtitles for : %s', file, {});
-    winston.debug('Using drivers : %s', options.driver);
-
-    var Autosub = require('../');
-    new Autosub()
-      .download(file)
-      .fail(function(e) {
-        winston.error("Error when : ", e.message, {});
-      })
-      .done();
-  });
-
-program.command('in').action(function(options){
-  var inquirer = require("inquirer");
-  inquirer.prompt([{name: 'name', message: 'Name'}], function(answers) {
-    console.log(answers);
-  });
-});
-
-program.command('me').action(function(options){
-  var multimeter = require("multimeter");
-  var multi = multimeter(process);
-  multi.on('^C', function(){
-    // TODO: Impl next !
-    process.exit();
-  });
-  // multi.charm.reset();
-  multi.write('Search : (stop ^C)\n');
-  setTimeout(function(){
-    multi.destroy();
-  }, 3000);
-  // multi.destroy();
-
-});
-
-program.command('progress').action(function(options) {
-
-var multimeter = require('multimeter');
-
-var multi = multimeter(process);
-multi.on('^C', process.exit);
-multi.charm.reset();
-
-var bars = [];
-var progress = [];
-var deltas = [];
-
-multi.write('Progress:\n\n');
-
-for (var i = 0; i < 5; i++) {
-    var s = 'ABCDE'[i] + ': \n';
-    multi.write(s);
-
-    var bar = multi(s.length, i + 3, {
-        width : 20,
-        solid : {
-            text : '|',
-            foreground : 'white',
-            background : 'blue'
-        },
-        empty : { text : ' ' },
-    });
-    bars.push(bar);
-
-    deltas[i] = 1 + Math.random() * 9;
-    progress.push(0);
-}
-
-multi.write('\nbeep boop\n');
-
-var pending = progress.length;
-var iv = setInterval(function () {
-    progress.forEach(function (p, i) {
-        progress[i] += Math.random() * deltas[i];
-        bars[i].percent(progress[i]);
-        if (p < 100 && progress[i] >= 100) pending --;
-        if (pending === 0) {
-            multi.write('\nAll done.\n');
-            multi.destroy();
-            clearInterval(iv);
-            pending --;
-        }
-    });
-}, 100);
-});
-
-program.command('test').action(function() {
-  console.log(chalk.blue('Hello World !'));
-});
-
-program.parse(process.argv);
+  .command('download <file>', 'download a subtitle')
+  .command('config', 'config autosub')
+  .parse(process.argv);

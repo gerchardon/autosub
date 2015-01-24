@@ -16,7 +16,7 @@
     "test": "make test"
   },
   "bin": {
-    "autosub": "bin/autosub"
+    "autosub": "lib/cli.js"
   },
   "preferGlobal": true,
   "author": "Gerome Chardon",
@@ -35,6 +35,7 @@
     "inquirer": "^0.8.0",
     "js-yaml": "^3.2.4",
     "jszip": "^2.4.0",
+    "lodash": "^2.4.1",
     "multimeter": "^0.1.1",
     "nomnom": "^1.8.1",
     "opensubtitles": "0.0.2",
