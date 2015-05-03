@@ -13,7 +13,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "make test"
+    "test": "mocha --require test/support/env --reporter dot",
+    "test-w": "mocha --require test/support/env --reporter dot --growl --watch"
   },
   "bin": {
     "autosub": "lib/cli.js"
@@ -32,12 +33,14 @@
     "cli-table": "^0.3.1",
     "commander": "^2.5.1",
     "config": "^1.9.0",
+    "globby": "^1.1.0",
     "inquirer": "^0.8.0",
     "js-yaml": "^3.2.4",
     "jszip": "^2.4.0",
     "lodash": "^2.4.1",
     "multimeter": "^0.1.1",
     "nomnom": "^1.8.1",
+    "npm-keyword": "^1.0.1",
     "opensubtitles": "0.0.2",
     "q": "^1.1.2",
     "request": "^2.51.0",
