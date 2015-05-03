@@ -1,16 +1,8 @@
-REPORTER = dot
-
 test:
-	@NODE_ENV=test ./node_modules/.bin/mocha \
-	--require test/support/env \
-	--reporter $(REPORTER) \
+	npm test
 
 test-w:
-	@NODE_ENV=test ./node_modules/.bin/mocha \
-	--require test/support/env \
-	--reporter $(REPORTER) \
-	--growl \
-	--watch
+	npm run-script test-w
 
 test-cov: lib-cov
 	@INSTINCT_COV=1 $(MAKE) test REPORTER=html-cov > public/coverage.html
