@@ -3,6 +3,9 @@
 "use strict";
 process.bin = process.title = "autosub";
 
+
+process.env.NODE_CONFIG_DIR='.config/autosub/';
+
 var program = require('commander');
 program
   .version('0.0.1');

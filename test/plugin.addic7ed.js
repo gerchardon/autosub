@@ -16,10 +16,10 @@ describe('autosub.plugins.addic7ed', function() {
 
       results.forEach(function(r){
         // TODO: Check all result ...
-        // winston.debug("zzzz");
-        // console.log(r.MovieKind);
-        // console.log(r.SubLanguageID);
-        // console.log(r.SubFormat);
+        // winston.info(r);
+        should.exist(r.language);
+        should.exist(r.download);
+        // r.download().pipe(process.stdout);
       });
       done();
     }).done();
