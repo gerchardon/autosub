@@ -17,7 +17,7 @@
     "test-w": "mocha --require test/support/env --reporter dot --growl --watch"
   },
   "bin": {
-    "autosub": "lib/cli.js"
+    "autosub": "bin/autosub.js"
   },
   "preferGlobal": true,
   "author": "Gerome Chardon",
