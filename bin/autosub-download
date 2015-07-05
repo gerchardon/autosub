@@ -5,7 +5,7 @@ process.bin = process.title = "autosub";
 
 // TODO: Handle windows, linux
 // TODO: Test file exist
-if( ! 'NODE_CONFIG_DIR' in process.env) {
+if(!('NODE_CONFIG_DIR' in process.env)) {
   process.env.NODE_CONFIG_DIR='.config/autosub/';
 }
 
