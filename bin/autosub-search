@@ -1,0 +1,37 @@
+#!/usr/bin/env node
+// -*- mode: Javascript; -*-
+"use strict";
+process.bin = process.title = "autosub";
+
+// TODO: Handle windows, linux
+// TODO: Test file exist
+process.env.NODE_CONFIG_DIR='/home/ubuntu/.config/autosub/';
+
+var program = require('commander');
+
+program
+  .option('-d, --driver <driver>', 'Driver choose')
+  .option('-v, --verbose', 'Verbose mode')
+  .parse(process.argv);
+
+var winston = require('winston');
+winston.cli();
+if (program.verbose) {
+  winston.level = 'debug';
+}
+
+var path = require('path');
+var file = program.args[0];
+winston.debug('Find subtitles for : %s', file, {});
+winston.debug('Using drivers : %s', program.driver);
+
+var Autosub = require('../');
+new Autosub()
+  .search(path.basename(file), file)
+  .then(function(results){
+    console.log(results);
+  })
+  .fail(function(e) {
+    winston.error("Error when : ", e.message, {});
+  })
+  .done();

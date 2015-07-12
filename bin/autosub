@@ -17,5 +17,6 @@ program.on('--help', function(){
 
 program
   .command('download <file>', 'download a subtitle')
+  .command('search <name>', 'search sub for a name')
   .command('config', 'config autosub')
   .parse(process.argv);
